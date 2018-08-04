@@ -17,15 +17,17 @@ contract FsTKerWallet {
 
   address public owner;
   bytes32 public secretHash;
+  uint256 public sn;
 
   modifier onlyOwner {
     require(msg.sender == owner);
     _;
   }
 
-  constructor (ERC _FST, bytes32 _secretHash) public {
+  constructor (ERC _FST, bytes32 _secretHash, uint256 _sn) public {
     FST = _FST;
     secretHash = _secretHash;
+    sn = _sn;
   }
 
   function getFSTBalance () public view returns (uint256) {
